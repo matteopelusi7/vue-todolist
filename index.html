@@ -15,17 +15,17 @@
 
         <div class="todo-add">
 
-            <input type="text">
-            <button>Add</button>
+            <input type="text" v-model="todo">
+            <button @click="addTodo">Add</button>
 
         </div>
 
         <div class="todo-wrapper">
 
             <ul>
-                <li v-for="element in toDoList" :class=" (element.done == true) ? 'complete' : '' ">
+                <li v-for="(element, i) in toDoList" :class=" (element.done == true) ? 'complete' : '' ">
                     {{ element.text }}
-                    <i class="fa-solid fa-xmark"></i>
+                    <i class="fa-solid fa-xmark" @click="deleteTodo(i)"></i>
                 </li>
             </ul>
 
