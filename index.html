@@ -15,7 +15,7 @@
 
         <div class="todo-add">
 
-            <input type="text" v-model="todo">
+            <input type="text" v-model="todo" @keyup.enter="addTodo">
             <button @click="addTodo">Add</button>
 
         </div>
@@ -23,7 +23,9 @@
         <div class="todo-wrapper">
 
             <ul>
-                <li v-for="(element, i) in toDoList" :class=" (element.done == true) ? 'complete' : '' ">
+                <li v-for="(element, i) in toDoList"
+                @click="doneInvert(i)"
+                :class=" (element.done == true) ? 'complete' : '' ">
                     {{ element.text }}
                     <i class="fa-solid fa-xmark" @click="deleteTodo(i)"></i>
                 </li>
